@@ -1,0 +1,109 @@
+.main-container{
+    display: flex;
+    height: 80%;
+    width: 750px; 
+    border: 2px solid rgba(221, 241, 183, 0.897);
+    border-radius: 8px;
+    margin: 36px auto;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px 36px;
+    margin-top: 50px;
+}
+.l-main-container{
+    width: 60%;
+    height: 70%;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    flex-direction: column;
+}
+.r-main-container{
+    width: 40%;
+    height: 70%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 86px;
+}
+.heading{
+    color: #202124;
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3333;
+    padding-top: 18px;
+    margin-top: 0px;
+    display: flex;
+}
+.logo {
+    display: flex;
+    justify-content: start;
+    height: 32px;
+    align-items: center;
+}
+.logo p{
+    font-size: x-large;
+    font-weight: 600;
+}
+.row-Container{
+    padding: 30px 17px 10px 0px; 
+    width: 400px;
+}
+.name{
+  
+    justify-content: space-between;
+    display: flex;
+}
+.email-option{
+    color: #1a73e8;
+    letter-spacing: .0107142857em;
+    font-weight: 500;
+    display: flex;
+    /* padding-left: 18px; */
+}
+.bellow{
+    color: rgba(0, 0, 0, 0.6);
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.66;
+    letter-spacing: 0.03333em;
+    text-align: left;
+    margin-right: 14px;
+    margin-bottom: 0;
+   
+
+}
+.small{
+    width: 194px;
+}
+.password{
+    display: flex;
+    align-items: center;
+}
+.check{
+    width: 15px;
+}
+.bottum{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 4px;
+    width: 90%;
+}
+
+.image-container{
+    width: 80%;
+    padding: 0px 45px 0px;
+}
+.image-discription{
+    font-size: 18px;
+    font-weight: 300; 
+    text-align: center;
+    width: 66%;
+    padding-left: 25px;
+    color: #202124;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    line-height: 1.4286;
+}
