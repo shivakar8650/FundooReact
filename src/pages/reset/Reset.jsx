@@ -1,8 +1,21 @@
 import React, { Component } from 'react'
-import './foeget.css';
+import './reset.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-export class Forget extends Component {
+import { Checkbox,FormControlLabel } from '@mui/material';
+export class Reset extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          type: "password"
+        };
+      }
+    
+      showPassword = (event) => {
+        event.target.checked ? this.setState({type:"text"}) : this.setState({type:"password"  })
+    }
+    
   render() {
     return (
         <div className="main-container">
@@ -17,22 +30,25 @@ export class Forget extends Component {
                         <span style={{ color: "#DB4437" }}>o</span>
                     </p>
                 </div>
-            <div > <h1 className="heading">Find your email </h1></div>
-            <div > <h3  className="title">Enter your phone number or recovery email</h3></div>
+            <div > <h1 className="heading">Reset Password </h1></div>
             <div  className="row-Container" >
-                <TextField id="outlined-basic"  fullWidth label="Email or phone"  />
+                <TextField id="outlined-basic" type={this.state.type} fullWidth label="New password"  />
             </div>
-                        
+            <div  className="row-Container" >
+            <TextField id="outlined-basic" type={this.state.type}  fullWidth label="Confirm password"  />
+            </div>           
             <div  className="bottum">
+            <div className='checkbox'>
+              <FormControlLabel control={<Checkbox onChange={this.showPassword} />} label="Show Password" />
+            </div>
                 <div >
                     <Button variant="contained">Next</Button>
                 </div>
             </div>
         </div>
     </div>
-
     )
   }
 }
 
-export default Forget
+export default Reset
