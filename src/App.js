@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 //import Signup from './pages/signup/Signup';
 import Signin from './pages/singnin/Signin';
+import Forget from './pages/forget/Forget';
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
         </a>
       </header> */}
        {/* <Signup /> */}
-       <Signin />
+       {/* <Signin /> */}
+       <Forget />
     </div>
   );
 }
