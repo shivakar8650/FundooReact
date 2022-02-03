@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-//import Signup from './pages/signup/Signup';
-import Signin from './pages/singnin/Signin';
-import Forget from './pages/forget/Forget';
-import Reset from './pages/reset/Reset';
+import Signup from './pages/signup/Signup';
+//import Signin from './pages/singnin/Signin';
+//import Forget from './pages/forget/Forget';
+//import Reset from './pages/reset/Reset';
 
 
 function App() {
@@ -23,10 +23,10 @@ function App() {
           Learn React
         </a>
       </header> */}
-       {/* <Signup /> */}
+       <Signup />
        {/* <Signin /> */}
        {/* <Forget /> */}
-       <Reset />
+       {/* <Reset /> */}
     </div>
   );
 }

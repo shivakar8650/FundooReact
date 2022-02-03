@@ -59,3 +59,17 @@
     padding-bottom: 134px;
     justify-content: space-between;
 }
+ 
+@media (max-width:800px)
+{
+    .main-container{
+        width:50vw;
+    }
+}
+
+@media (max-width:1000px)
+{
+    .main-container{
+        width:35vw;
+    }
+}

@@ -2,11 +2,23 @@ import React, { Component } from 'react'
 import TextField from '@mui/material/TextField';
 import './signup.css';
 import Button from '@mui/material/Button';
+import { Checkbox,FormControlLabel } from '@mui/material';
 export class Signup extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          type: "password"
+        };
+      }
+    
+      showPassword = (event) => {
+        event.target.checked ? this.setState({type:"text"}) : this.setState({type:"password"  })
+    }
     render() {
         return (
-            <div class="main-container">
-                <div class="l-main-container">
+            <div className="main-container">
+                <div className="l-main-container">
                     <div className="logo">
                         <p>
                             <span style={{ color: "#4285F4" }}>F</span>
@@ -17,36 +29,34 @@ export class Signup extends Component {
                             <span style={{ color: "#DB4437" }}>o</span>
                         </p>
                     </div>
-                    <div > <h1 class="heading">Create Your Account </h1></div>
-                    <div class="row-Container name"  >
+                    <div > <h1 className="heading">Create Your Account </h1></div>
+                    <div className="row-Container name"  >
 
-                        <div className='small'> <TextField id="outlined-basic" size="small" label="First name" variant="outlined" /></div>
-                        <div className='small'>  <TextField id="outlined-basic" size="small" label="Last name" variant="outlined" /> </div>
+                        <div className='small'> <TextField id="outlined-basic" fullWidth size="small" label="First name" variant="outlined" /></div>
+                        <div className='small'>  <TextField id="outlined-basic" fullWidth size="small" label="Last name" variant="outlined" /> </div>
                     </div>
-                    <div class="row-Container" >
+                    <div className="row-Container" >
                         <TextField id="outlined-basic" size="small" fullWidth label="Username" helperText="You can use letters numbers & periods" variant="outlined" />
                     </div>
-                    <div class="email-option">Use my current email address instead </div>
+                    <div className="email-option">Use my current email address instead </div>
                     <br />
-                    <div class="row-Container name" >
-                        <div className='small'> <TextField id="outlined-basic" size="small" label="Password" variant="outlined" />  </div>
-                        <div className='small'> <TextField id="outlined-basic" size="small" label="Confirm" variant="outlined" />  </div>
+                    <div className="last row-Container name " >
+                        <div className='small'> <TextField id="outlined-basic" type={this.state.type}  fullWidth size="small" label="Password" variant="outlined" />  </div>
+                        <div className=" last small"> <TextField id="outlined-basic" type={this.state.type}  fullWidth size="small" label="Confirm" variant="outlined" />  </div>
                     </div>
-                    <div class="bellow">Use 8 or more characters with a mix of letters, numbers & symbols</div>
-                    <div class="row-Container password">
-                        <input class="check" type="checkbox" />
-                        <p class="showbox">Show Password</p>
-                    </div>
-                    <div class="row-Container bottum">
-                        <div class="email-option">Sign in instead</div>
-                        <div class="">
-                            {/* <button  class="btn btn-primary">Next</button> */}
+                    <div className="bellow">Use 8 or more characters with a mix of letters, numbers & symbols</div>
+                    <div className='checkbox'>
+                            <FormControlLabel control={<Checkbox onChange={this.showPassword} />} label="Show Password" />
+                        </div>
+                    <div className="bottum">
+                              <div> <p>Sign in instead</p> </div>
+                        <div >
                             <Button variant="contained">Next</Button>
                         </div>
                     </div>
                 </div>
-                <div class="r-main-container">
-                    <div class="image-container">
+                <div className="r-main-container">
+                    <div className="image-container">
                         <img src="https://ssl.gstatic.com/accounts/signup/glif/account.svg" alt="" />
                     </div>
                     <div className="image-discription">
