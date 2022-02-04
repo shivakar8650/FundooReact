@@ -8,13 +8,42 @@ export class Reset extends Component {
         super(props);
     
         this.state = {
-          type: "password"
+          type: "password",
+          password: "",
+          confirm: "",
+          passwordError: false,
+          confirmError: false
         };
       }
     
       showPassword = (event) => {
         event.target.checked ? this.setState({type:"text"}) : this.setState({type:"password"  })
     }
+
+    validation = () => {
+      var isError = false;
+      const error = this.state;
+      error.passwordError = this.state.password === '' ? true : false;
+      error.confirmError = this.state.confirm === '' ? true : false;
+      this.setState({
+          ...error
+      })
+      isError = error.passwordError || error.confirmError;
+      return isError;
+  }
+
+  changeHandle = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value
+    });
+}
+
+next = () => {
+    let valid = this.validation();
+    if (!valid) {
+        console.log(valid)
+    }
+}
     
   render() {
     return (
@@ -32,17 +61,35 @@ export class Reset extends Component {
                 </div>
             <div > <h1 className="r-heading">Reset Password </h1></div>
             <div  className="r-row-Container" >
-                <TextField id="outlined-basic" type={this.state.type} fullWidth label="New password"  />
+                <TextField
+                name="password" 
+                id="outlined-basic" 
+                type={this.state.type} 
+                fullWidth
+                label="New password" 
+
+                error={this.state.passwordError}
+                helperText={this.state.passwordError ? "Password is required" : ''}
+                onChange={(e) => this.changeHandle(e)}/>
             </div>
             <div  className="r-row-Container" >
-            <TextField id="outlined-basic" type={this.state.type}  fullWidth label="Confirm password"  />
+            <TextField 
+            name="confirm"
+            id="outlined-basic" 
+            type={this.state.type}  
+            fullWidth 
+            label="Confirm password"  
+            
+            error={this.state.confirmError}
+            helperText={this.state.confirmError ? "Confirm Password is required" : ''}
+            onChange={(e) => this.changeHandle(e)}/>
             </div>           
             <div  className="r-bottum">
             <div className='checkbox'>
               <FormControlLabel control={<Checkbox onChange={this.showPassword} />} label="Show Password" />
             </div>
                 <div >
-                    <Button variant="contained">Next</Button>
+                <Button variant="contained" onClick={this.next}>Next</Button>
                 </div>
             </div>
         </div>

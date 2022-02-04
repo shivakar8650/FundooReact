@@ -3,6 +3,41 @@ import './foeget.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 export class Forget extends Component {
+       constructor(props) {
+        super(props);
+    
+        this.state = {
+    
+          email: "",
+          emailError: false,
+        };
+      }
+    
+        validation = () => {
+          var isError = false;
+          const error = this.state;
+          error.emailError = this.state.email === '' ? true : false;
+          this.setState({
+            ...error
+          })
+          isError = error.emailError;
+          return isError;
+        }
+    
+    
+        changeHandle = (e) => {
+          this.setState({
+            [e.target.name]: e.target.value
+          });
+        }
+    
+        next = () => {
+          let valid = this.validation();
+          if (!valid) {
+            console.log(valid)
+          }
+        }
+    
   render() {
     return (
         <div className="f-container">
@@ -20,12 +55,19 @@ export class Forget extends Component {
             <div > <h1 className="f-heading">Find your email </h1></div>
             <div > <h3  className="f-title">Enter your phone number or recovery email</h3></div>
             <div  className="f-row-Container" >
-                <TextField id="outlined-basic"  fullWidth label="Email or phone"  />
+                <TextField
+                name="email"
+                id="outlined-basic"
+                fullWidth
+                label="Email or phone" 
+                error={this.state.emailError}
+                helperText={this.state.emailError ? "Email required " : " "}
+                onChange={(e) => this.changeHandle(e)} />
             </div>
                         
             <div  className="f-bottum">
                 <div >
-                    <Button variant="contained">Next</Button>
+                <Button variant="contained" onClick={this.next}>Next</Button>
                 </div>
             </div>
         </div>
