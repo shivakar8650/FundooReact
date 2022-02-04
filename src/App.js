@@ -23,10 +23,10 @@ function App() {
           Learn React
         </a>
       </header> */}
-       {/* <Signup /> */}
+       <Signup />
        {/* <Signin /> */}
        {/* <Forget /> */}
-       <Reset />
+       {/* <Reset /> */}
     </div>
   );
 }

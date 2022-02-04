@@ -2,19 +2,59 @@ import React, { Component } from 'react'
 import TextField from '@mui/material/TextField';
 import './signup.css';
 import Button from '@mui/material/Button';
-import { Checkbox,FormControlLabel } from '@mui/material';
+import { Checkbox, FormControlLabel } from '@mui/material';
 export class Signup extends Component {
     constructor(props) {
         super(props);
-    
+
         this.state = {
-          type: "password"
+            type: "password",
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            confirm: "",
+            firstNameError: false,
+            lastNameEroor: false,
+            emailError: false,
+            passwordError: false,
+            confirmError: false
+
         };
-      }
-    
-      showPassword = (event) => {
-        event.target.checked ? this.setState({type:"text"}) : this.setState({type:"password"  })
     }
+
+    validation = () => {
+        var isError = false;
+        const error = this.state;
+        error.firstNameError = this.state.firstName === '' ? true : false;
+        error.lastNameEroor = this.state.lastName === '' ? true : false;
+        error.emailError = this.state.email === '' ? true : false;
+        error.passwordError = this.state.password === '' ? true : false;
+        error.confirmError = this.state.confirm === '' ? true : false;
+        this.setState({
+            ...error
+        })
+        isError = error.firstNameError || error.lastNameEroor || error.emailError || error.passwordError || error.confirmError;
+        return isError;
+    }
+
+    showPassword = (event) => {
+        event.target.checked ? this.setState({ type: "text" }) : this.setState({ type: "password" })
+    }
+
+    changeHandle = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    next = () => {
+        let valid = this.validation();
+        if (!valid) {
+            console.log(valid)
+        }
+    }
+
     render() {
         return (
             <div className="main-container">
@@ -32,26 +72,86 @@ export class Signup extends Component {
                     <div > <h1 className="heading">Create Your Account </h1></div>
                     <div className="row-Container name"  >
 
-                        <div className='small'> <TextField id="outlined-basic" fullWidth size="small" label="First name" variant="outlined" /></div>
-                        <div className='small'>  <TextField id="outlined-basic" fullWidth size="small" label="Last name" variant="outlined" /> </div>
+                        <div className='small'>
+                            <TextField
+                                name="firstName"
+                                id="outlined-basic 4"
+                                fullWidth 
+                                size="small"
+                                label="First name"
+                                variant="outlined"
+
+                                error={this.state.firstNameError}
+                                helperText={this.state.firstNameError ? "firstname required " : " "}
+                                onChange={(e) => this.changeHandle(e)} />
+                        </div>
+                        <div className='small'>
+                            <TextField
+                                name="lastName"
+                                id="outlined-basic 5"
+                                fullWidth
+                                size="small"
+                                label="Last name"
+                                variant="outlined"
+
+                                error={this.state.lastNameEroor}
+                                helperText={this.state.lastNameEroor ? "lastname required " : " "}
+                                onChange={(e) => this.changeHandle(e)} />
+                        </div>
                     </div>
                     <div className="row-Container" >
-                        <TextField id="outlined-basic" size="small" fullWidth label="Username" helperText="You can use letters numbers & periods" variant="outlined" />
+                        <TextField
+                            name="email"
+                            id="outlined-basic 1"
+                            size="small"
+                            fullWidth 
+                            label="Username"
+                            helperText="You can use letters numbers & periods" 
+                            variant="outlined"
+
+                            error={this.state.emailError}
+                            helperText={this.state.emailError ? "Email is required" : ''}
+                            onChange={(e) => this.changeHandle(e)} />
                     </div>
                     <div className="email-option">Use my current email address instead </div>
                     <br />
                     <div className="last row-Container name " >
-                        <div className='small'> <TextField id="outlined-basic" type={this.state.type}  fullWidth size="small" label="Password" variant="outlined" />  </div>
-                        <div className=" last small"> <TextField id="outlined-basic" type={this.state.type}  fullWidth size="small" label="Confirm" variant="outlined" />  </div>
+                        <div className='small'>
+                            <TextField
+                                name="password"
+                                id="outlined-basic 2"
+                                type={this.state.type}
+                                fullWidth size="small"
+                                label="Password"
+                                variant="outlined"
+
+                                error={this.state.passwordError}
+                                helperText={this.state.passwordError ? "Password is required" : ''}
+                                onChange={(e) => this.changeHandle(e)} />
+                        </div>
+                        <div className=" last small">
+                            <TextField
+                                name="confirm"
+                                id="outlined-basic 3"
+                                type={this.state.type}
+                                fullWidth 
+                                size="small"
+                                label="Confirm"
+                                variant="outlined"
+
+                                error={this.state.confirmError}
+                                helperText={this.state.confirmError ? "Confirm Password is required" : ''}
+                                onChange={(e) => this.changeHandle(e)} />
+                        </div>
                     </div>
                     <div className="bellow">Use 8 or more characters with a mix of letters, numbers & symbols</div>
                     <div className='checkbox'>
-                            <FormControlLabel control={<Checkbox onChange={this.showPassword} />} label="Show Password" />
-                        </div>
+                        <FormControlLabel control={<Checkbox onChange={this.showPassword} />} label="Show Password" />
+                    </div>
                     <div className="bottum">
-                              <div> <p>Sign in instead</p> </div>
+                        <div> <p>Sign in instead</p> </div>
                         <div >
-                            <Button variant="contained">Next</Button>
+                            <Button variant="contained" onClick={this.next}>Next</Button>
                         </div>
                     </div>
                 </div>
