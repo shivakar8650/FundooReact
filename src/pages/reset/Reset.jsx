@@ -18,9 +18,9 @@ export class Reset extends Component {
     
   render() {
     return (
-        <div className="main-container">
-        <div className ="l-main-container">
-               <div className="logo">
+        <div className="r-container">
+        <div className ="re-main-container">
+               <div className="r-logo">
                     <p>
                         <span style={{ color: "#4285F4" }}>F</span>
                         <span style={{ color: "#DB4437" }}>u</span>
@@ -30,14 +30,14 @@ export class Reset extends Component {
                         <span style={{ color: "#DB4437" }}>o</span>
                     </p>
                 </div>
-            <div > <h1 className="heading">Reset Password </h1></div>
-            <div  className="row-Container" >
+            <div > <h1 className="r-heading">Reset Password </h1></div>
+            <div  className="r-row-Container" >
                 <TextField id="outlined-basic" type={this.state.type} fullWidth label="New password"  />
             </div>
-            <div  className="row-Container" >
+            <div  className="r-row-Container" >
             <TextField id="outlined-basic" type={this.state.type}  fullWidth label="Confirm password"  />
             </div>           
-            <div  className="bottum">
+            <div  className="r-bottum">
             <div className='checkbox'>
               <FormControlLabel control={<Checkbox onChange={this.showPassword} />} label="Show Password" />
             </div>
