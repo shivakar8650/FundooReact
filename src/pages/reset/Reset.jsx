@@ -3,6 +3,11 @@ import './reset.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Checkbox,FormControlLabel } from '@mui/material';
+import Userservices from '../../services/UserServices';
+
+
+
+const users = new Userservices();
 export class Reset extends Component {
     constructor(props) {
         super(props);
@@ -40,8 +45,18 @@ export class Reset extends Component {
 
 next = () => {
     let valid = this.validation();
+    let data = {
+      "newPassword": this.state.password,
+      "confirmPassword": this.state.confirm
+    }
+
     if (!valid) {
-        console.log(valid)
+      users.ResetPassword(data)
+        .then((res) => {
+          console.log(res.data);
+        }).catch((err) => {
+          console.log(err);
+        })
     }
 }
     

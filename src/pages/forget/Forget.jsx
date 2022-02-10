@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import './foeget.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+// import { useHistory } from "react-router";
+import Userservices from '../../services/UserServices';
+
+const users = new Userservices();
 export class Forget extends Component {
        constructor(props) {
         super(props);
@@ -13,6 +17,8 @@ export class Forget extends Component {
         };
       }
     
+     
+
         validation = () => {
           var isError = false;
           const error = this.state;
@@ -32,9 +38,19 @@ export class Forget extends Component {
         }
     
         next = () => {
+         
           let valid = this.validation();
+          let data = {
+            "emailId": this.state.email
+          }
           if (!valid) {
-            console.log(valid)
+            console.log("heello");
+            users.forget(data)
+              .then((res) => {
+                console.log(res.data);
+              }).catch((err) => {
+                console.log(err);
+              })
           }
         }
     

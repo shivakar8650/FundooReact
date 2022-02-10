@@ -3,11 +3,23 @@ import TextField from '@mui/material/TextField';
 import './signup.css';
 import Button from '@mui/material/Button';
 import { Checkbox, FormControlLabel } from '@mui/material';
+// import axios from "axios";
+// import { Link } from "react-router-dom";
+// import { withRouter } from 'react-router';
+import Userservices from '../../services/UserServices';
+// import { Redirect } from 'react-router';
+import { Navigate } from "react-router-dom";
+
+
+
+const users = new Userservices();
+
 export class Signup extends Component {
     constructor(props) {
         super(props);
-
+    
         this.state = {
+            redirect:false,
             type: "password",
             firstName: "",
             lastName: "",
@@ -19,9 +31,9 @@ export class Signup extends Component {
             emailError: false,
             passwordError: false,
             confirmError: false
-
         };
     }
+
 
     validation = () => {
         var isError = false;
@@ -43,19 +55,39 @@ export class Signup extends Component {
     }
 
     changeHandle = (e) => {
+        console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value
         });
     }
 
+  
     next = () => {
         let valid = this.validation();
+        let data = {
+            "firstName": this.state.firstName,
+            "lastName": this.state.lastName,
+            "emailId": this.state.email,
+            "password": this.state.password
+        };
         if (!valid) {
-            console.log(valid)
+            users.Register(data)
+                .then((res) => {
+                    console.log(res.data);
+                    this.setState({
+                        redirect:true
+                    });
+                }).catch((err) => {
+                    console.log(err);
+                })
         }
     }
 
     render() {
+          if(this.state.redirect)
+          {
+             return <Navigate to="/login" />
+          }
         return (
             <div className="main-container">
                 <div className="l-main-container">
@@ -76,11 +108,12 @@ export class Signup extends Component {
                             <TextField
                                 name="firstName"
                                 id="outlined-basic 4"
-                                fullWidth 
+                                fullWidth
+                                type="text"
                                 size="small"
                                 label="First name"
                                 variant="outlined"
-
+                                // value={this.state.firstName}
                                 error={this.state.firstNameError}
                                 helperText={this.state.firstNameError ? "firstname required " : " "}
                                 onChange={(e) => this.changeHandle(e)} />
@@ -90,10 +123,11 @@ export class Signup extends Component {
                                 name="lastName"
                                 id="outlined-basic 5"
                                 fullWidth
+                                type="text"
                                 size="small"
                                 label="Last name"
                                 variant="outlined"
-
+                                // value={this.state.lastName}
                                 error={this.state.lastNameEroor}
                                 helperText={this.state.lastNameEroor ? "lastname required " : " "}
                                 onChange={(e) => this.changeHandle(e)} />
@@ -104,13 +138,14 @@ export class Signup extends Component {
                             name="email"
                             id="outlined-basic 1"
                             size="small"
-                            fullWidth 
+                            fullWidth
+                            type="text"
                             label="Username"
-                            helperText="You can use letters numbers & periods" 
+                            helperText="You can use letters numbers & periods"
                             variant="outlined"
-
+                            // value={this.state.email}
                             error={this.state.emailError}
-                            helperText={this.state.emailError ? "Email is required" : ''}
+                            helperText={this.state.emailError ? "Email is required" : ' '}
                             onChange={(e) => this.changeHandle(e)} />
                     </div>
                     <div className="email-option">Use my current email address instead </div>
@@ -124,9 +159,9 @@ export class Signup extends Component {
                                 fullWidth size="small"
                                 label="Password"
                                 variant="outlined"
-
+                                // value={this.state.password}
                                 error={this.state.passwordError}
-                                helperText={this.state.passwordError ? "Password is required" : ''}
+                                helperText={this.state.passwordError ? "Password is required" : ' '}
                                 onChange={(e) => this.changeHandle(e)} />
                         </div>
                         <div className=" last small">
@@ -134,13 +169,13 @@ export class Signup extends Component {
                                 name="confirm"
                                 id="outlined-basic 3"
                                 type={this.state.type}
-                                fullWidth 
+                                fullWidth
                                 size="small"
                                 label="Confirm"
                                 variant="outlined"
-
+                                // value={this.state.confirm}
                                 error={this.state.confirmError}
-                                helperText={this.state.confirmError ? "Confirm Password is required" : ''}
+                                helperText={this.state.confirmError ? "Confirm  is required" : ' '}
                                 onChange={(e) => this.changeHandle(e)} />
                         </div>
                     </div>
@@ -149,7 +184,8 @@ export class Signup extends Component {
                         <FormControlLabel control={<Checkbox onChange={this.showPassword} />} label="Show Password" />
                     </div>
                     <div className="bottum">
-                        <div> <p>Sign in instead</p> </div>
+                           <div> <p> Signin instead </p> </div>
+                        {/* <div> <p> <Link to="/Signin">Signin instead</Link></p> </div> */}
                         <div >
                             <Button variant="contained" onClick={this.next}>Next</Button>
                         </div>
