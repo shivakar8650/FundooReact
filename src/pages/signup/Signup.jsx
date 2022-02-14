@@ -4,7 +4,7 @@ import './signup.css';
 import Button from '@mui/material/Button';
 import { Checkbox, FormControlLabel } from '@mui/material';
 // import axios from "axios";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { withRouter } from 'react-router';
 import Userservices from '../../services/UserServices';
 // import { Redirect } from 'react-router';
@@ -55,7 +55,6 @@ export class Signup extends Component {
     }
 
     changeHandle = (e) => {
-        console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -113,7 +112,7 @@ export class Signup extends Component {
                                 size="small"
                                 label="First name"
                                 variant="outlined"
-                                // value={this.state.firstName}
+                               
                                 error={this.state.firstNameError}
                                 helperText={this.state.firstNameError ? "firstname required " : " "}
                                 onChange={(e) => this.changeHandle(e)} />
@@ -127,7 +126,7 @@ export class Signup extends Component {
                                 size="small"
                                 label="Last name"
                                 variant="outlined"
-                                // value={this.state.lastName}
+                               
                                 error={this.state.lastNameEroor}
                                 helperText={this.state.lastNameEroor ? "lastname required " : " "}
                                 onChange={(e) => this.changeHandle(e)} />
@@ -143,12 +142,12 @@ export class Signup extends Component {
                             label="Username"
                             helperText="You can use letters numbers & periods"
                             variant="outlined"
-                            // value={this.state.email}
+                          
                             error={this.state.emailError}
                             helperText={this.state.emailError ? "Email is required" : ' '}
                             onChange={(e) => this.changeHandle(e)} />
                     </div>
-                    <div className="email-option">Use my current email address instead </div>
+                    <div className="email-option"> Use my current email address instead  </div>
                     <br />
                     <div className="last row-Container name " >
                         <div className='small'>
@@ -159,7 +158,7 @@ export class Signup extends Component {
                                 fullWidth size="small"
                                 label="Password"
                                 variant="outlined"
-                                // value={this.state.password}
+                                
                                 error={this.state.passwordError}
                                 helperText={this.state.passwordError ? "Password is required" : ' '}
                                 onChange={(e) => this.changeHandle(e)} />
@@ -173,7 +172,7 @@ export class Signup extends Component {
                                 size="small"
                                 label="Confirm"
                                 variant="outlined"
-                                // value={this.state.confirm}
+                               
                                 error={this.state.confirmError}
                                 helperText={this.state.confirmError ? "Confirm  is required" : ' '}
                                 onChange={(e) => this.changeHandle(e)} />
@@ -184,8 +183,7 @@ export class Signup extends Component {
                         <FormControlLabel control={<Checkbox onChange={this.showPassword} />} label="Show Password" />
                     </div>
                     <div className="bottum">
-                           <div> <p> Signin instead </p> </div>
-                        {/* <div> <p> <Link to="/Signin">Signin instead</Link></p> </div> */}
+                        <div> <p> <Link to="/login" style={{textDecoration: "none",color:"#1a73e8"}}>Signin instead</Link></p> </div>
                         <div >
                             <Button variant="contained" onClick={this.next}>Next</Button>
                         </div>

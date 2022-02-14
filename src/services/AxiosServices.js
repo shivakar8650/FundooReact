@@ -10,7 +10,7 @@ class AxiosService{
          return  axios.post(url,data,headers)
       }
     
-      put(url,data="",headers=false){
+      put(url,data="",headers=true){
         return axios.put(url,data,headers)
       }
 }

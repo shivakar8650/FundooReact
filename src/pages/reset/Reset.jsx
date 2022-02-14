@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Checkbox,FormControlLabel } from '@mui/material';
 import Userservices from '../../services/UserServices';
-
+import { Navigate } from "react-router-dom";
 
 
 const users = new Userservices();
@@ -13,6 +13,7 @@ export class Reset extends Component {
         super(props);
     
         this.state = {
+          redirect:false,
           type: "password",
           password: "",
           confirm: "",
@@ -22,8 +23,9 @@ export class Reset extends Component {
       }
     
       showPassword = (event) => {
-        event.target.checked ? this.setState({type:"text"}) : this.setState({type:"password"  })
+        event.target.checked ? this.setState({ type: "text" }) : this.setState({ type: "password" })
     }
+
 
     validation = () => {
       var isError = false;
@@ -47,12 +49,16 @@ next = () => {
     let valid = this.validation();
     let data = {
       "newPassword": this.state.password,
-      "confirmPassword": this.state.confirm
+      "confirmPassword": this.state.confirm,
+      
     }
-
+   
     if (!valid) {
       users.ResetPassword(data)
         .then((res) => {
+          this.setState({
+            redirect:true
+        });
           console.log(res.data);
         }).catch((err) => {
           console.log(err);
@@ -61,6 +67,10 @@ next = () => {
 }
     
   render() {
+    if(this.state.redirect)
+    {
+       return <Navigate to="/login" />
+    }
     return (
         <div className="r-container">
         <div className ="re-main-container">
@@ -100,7 +110,7 @@ next = () => {
             onChange={(e) => this.changeHandle(e)}/>
             </div>           
             <div  className="r-bottum">
-            <div className='checkbox'>
+            <div className="checkbox">
               <FormControlLabel control={<Checkbox onChange={this.showPassword} />} label="Show Password" />
             </div>
                 <div >

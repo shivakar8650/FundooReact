@@ -1,0 +1,150 @@
+
+.takenote-container{
+    
+    width: 70%;
+    text-align: center;
+    align-items: center;
+    display:block;
+    direction: ltr;
+    .open-container{
+        width: 60%;
+        height: 100%;
+        border: 1px solid lightgray;
+        display: flex;
+        font-size: 14px;
+        text-align: left;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 11px;
+        margin: 5% 40%;
+        line-height: 1.4555;
+        box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+    .desc{
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 15px;
+        color: #000;
+    }
+    .icons{
+        display: flex;
+        .icon{
+            display: flex;
+            justify-content: space-around;
+            margin-left: 20px;
+            color: #787878;
+        }
+    }
+    }
+    .close-container{
+        width: 60%;
+        height: 100%;
+        border: 1px solid lightgray;
+        display: block;
+        font-size: 14px;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5% 40%;
+        line-height: 1.4555;
+        box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+        .note-title{
+            display: flex;
+            justify-content: space-between;
+            outline: none;
+        .title{
+            border: none;
+            width: 100%;
+            display: flex;
+            font-size: 15px;
+            color: #000;
+            outline: none;
+        }
+        .pin-icon{
+            display: flex;
+        }
+        }
+        .note-desc{
+            display: flex;
+            margin-top: 20px;
+        .desc1{
+            border: none;
+            font-size: 15px;
+            color: #000;
+            outline: none;
+        }
+        }
+        .note-icons{
+            margin-top: 30px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            .note-icon{
+                display: flex;
+                .iconlist1{
+                    .iconlist{
+                        display: flex;
+                        height: 30px;
+                        margin-top: 3px;
+                        justify-content: space-around;
+                        color: rgba(0, 0, 0, 0.87);
+                    }
+                }
+                .iconlist{
+                    display: flex;
+                    margin-left: 20px;
+                    height: 30px;
+                    justify-content: space-around;
+                    color: rgba(0, 0, 0, 0.87);
+                }
+            }
+            .close-btn{
+                display: flex;
+                text-transform: capitalize;
+                
+                .closebtn{
+                    font-size: 15px;
+                    color: rgba(0,0,0,0.87);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-transform: capitalize;
+                    letter-spacing: .01785714em;
+                    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+                    font-size: .875rem;
+                    font-weight: 500;
+                    line-height: 1.25rem;
+                }
+            }
+        }
+        
+    }
+}
+@media screen and (max-width:600px){
+    .takenote-container{
+        width: 100%;
+        margin: 0%;
+        .open-container{
+            width: 290px;
+            margin: 0%;
+        }
+        .close-container{
+            width: 290px;
+            margin: 0%;
+            .note-icons{
+                margin-top: 30px;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                .note-icon{
+                    display: flex;
+                    .iconlist1{
+                            margin-top: 3px;
+                            justify-content: space-around;
+                    }
+        }
+    }
+    }
+}
+}

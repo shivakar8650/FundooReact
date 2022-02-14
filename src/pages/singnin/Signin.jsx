@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import './signin.css';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Userservices from '../../services/UserServices';
-import Signup from '../signup/Signup';
-
+// import Signup from '../signup/Signup';
+import { Navigate } from "react-router-dom";
 const users = new Userservices();
 export class Signin extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-
+      redirect:false,
       email: "",
       password: "",
       emailError: false,
@@ -49,6 +49,12 @@ export class Signin extends Component {
       users.login(data)
         .then((res) => {
           console.log(res.data);
+          localStorage.setItem("token", res.data.data.token)
+        //   this.setState({
+
+        //     redirect:true
+        // });
+         
         }).catch((err) => {
           console.log(err);
         });
@@ -58,6 +64,10 @@ export class Signin extends Component {
 
 
   render() {
+    if(this.state.redirect)
+    {
+       return <Navigate to="/dashbord" />
+    }
     return (
       <div>
         <div className="s-container">
@@ -94,11 +104,10 @@ export class Signin extends Component {
                 helperText={this.state.passwordError ? "Password required " : " "}
                 onChange={(e) => this.changeHandle(e)} />
             </div>
-            <div className="link">Forget Email? </div>
+            <div className="link"><Link to="/forget" style={{textDecoration: "none"}}> Forget Email?</Link> </div>
             <div className="s-bellow">Not your computer? Use Guest mode to sign in privately</div>
             <div className="s-Container s-bottum">
-              {/* <div className="link"> <Link to="/Signup">Create account</Link></div> */}
-              <div className="link"> Create account </div>
+              <div className="link"> <Link to="/" style={{textDecoration: "none"}}>Create account</Link></div>
               <div >
                 <Button variant="contained" onClick={this.next}>Next</Button>
               </div>
