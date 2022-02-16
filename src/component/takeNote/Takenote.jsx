@@ -13,91 +13,99 @@ import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 //component
 import NoteServices from '../../services/NoteServices';
-
+import Icons from '../icons/Icon';
 const services = new NoteServices();
 export class Takenote extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            openNote:true,
-            title:"",
-            desc:""
+        this.state = {
+            openNote: true,
+            title: "",
+            desc: "",
+            color: "#fff"
         }
     }
 
-    handleOpen=()=>{
+    handleOpen = () => {
         this.setState({
-            openNote:false,
+            openNote: false,
         })
     }
-    handleInput=(e)=>{
+    handleInput = (e) => {
         this.setState({
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         })
-        console.log(e.target.value)
+
     }
-    close=()=>{
+    close = () => {
         this.setState({
-            openNote:true,
+            openNote: true,
         })
-        let data ={
+        let data = {
             "title": this.state.title,
             "message": this.state.desc
         }
         console.log(data);
         services.addnote(data)
-        .then((res)=>
-        {      console.log(res.data);
-            this.setState({
-                title:'',
-                desc:''
+            .then((res) => {
+                console.log(res.data);
+                this.setState({
+                    title: '',
+                    desc: ''
+                    
+                })
+                this.props.getAllNotes();
+                console.log("in take a note");
             })
-            this.props.getAllNotes();
-            
-        })
-        
-   
-      
+
     }
+
+    changeColor = (value) => {
+        this.setState({
+            color: value
+        })
+    }
+
+
     render() {
         return (
-            <div className='takenote-container'>
-                {this.state.openNote?
-            <div className='open-container' onClick={this.handleOpen}>
-                <input type="text" placeholder='Take a note...' name="desc" className='desc' onChange={(event) => this.handleInput(event)}/>
-                <div className="icons">
-                    <CheckBoxOutlinedIcon className='icon'/>
-                  <BrushSharpIcon className='icon'/>
-                  <CropOriginalIcon className='icon'/>
-                  
+            <div className='takenote-container' >
+             {/* <div className='takenote-container' > */}
+
+                    {this.state.openNote ?
+                        <div className='open-container' onClick={this.handleOpen}  style={{ backgroundColor: this.state.color }}>
+                            <input type="text" placeholder='Take a note...' name="desc" className='desc' onChange={(event) => this.handleInput(event)} />
+                            <div className="icons">
+                                <CheckBoxOutlinedIcon className='icon' />
+                                <BrushSharpIcon className='icon' />
+                                <CropOriginalIcon className='icon' />
+
+                            </div>
+                        </div>
+                        :
+                        <div className='close-container'  style={{ backgroundColor: this.state.color }}>
+                            <div className='note-title'>
+                                <input type="text" placeholder='Title' name="title" className='title' onChange={(event) => this.handleInput(event)} />
+                                <PushPinOutlinedIcon className="pin-icon" />
+                            </div>
+                            <div className='note-desc'>
+                                <input type="text" placeholder='Take a note...' name="desc" className='desc1' onChange={(event) => this.handleInput(event)} />
+                            </div>
+                            <div className="note-icons">
+                                <div className="note-icon">
+                                    < Icons mode="create" changeColor={this.changeColor} />
+                                    {/* < Icons   /> */}
+
+                                </div>
+                                <div className="close-btn">
+                                    <Button className="close-btn" onClick={this.close}>Close</Button>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
-            </div>
-             : 
-            <div className='close-container'>
-                <div className='note-title'>
-                    <input type="text" placeholder='Title' name="title" className='title' onChange={(event) => this.handleInput(event)}/>
-                    <PushPinOutlinedIcon className="pin-icon" />
-                </div>
-                <div className='note-desc'>
-                    <input type="text" placeholder='Take a note...' name="desc" className='desc1' onChange={(event) => this.handleInput(event)}/>
-                </div>
-                <div className="note-icons">
-                   <div className="note-icon"> 
-                    <AddAlertOutlinedIcon className="iconlist1" />
-                    <PersonAddOutlinedIcon className="iconlist"/>
-                    <ImageOutlinedIcon  className="iconlist"  />
-                    <ArchiveOutlinedIcon className="iconlist"/>
-                    <MoreVertOutlinedIcon className="iconlist"/>
-                </div>
-                <div className="close-btn">
-                    <Button className="close-btn" onClick={this.close}>Close</Button>
-                </div>
-                </div>
-            </div>
-         } 
-            </div>
-        )
+                )
     }
 }
 
-export default Takenote
+ export default Takenote

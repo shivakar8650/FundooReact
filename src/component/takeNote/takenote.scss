@@ -60,6 +60,7 @@
             font-size: 15px;
             color: #000;
             outline: none;
+            background: transparent;
         }
         .pin-icon{
             display: flex;
@@ -73,6 +74,7 @@
             font-size: 15px;
             color: #000;
             outline: none;
+            background: transparent;
         }
         }
         .note-icons{
@@ -82,23 +84,8 @@
             justify-content: space-between;
             .note-icon{
                 display: flex;
-                .iconlist1{
-                    .iconlist{
-                        display: flex;
-                        height: 30px;
-                        margin-top: 3px;
-                        justify-content: space-around;
-                        color: rgba(0, 0, 0, 0.87);
-                    }
-                }
-                .iconlist{
-                    display: flex;
-                    margin-left: 20px;
-                    height: 30px;
-                    justify-content: space-around;
-                    color: rgba(0, 0, 0, 0.87);
-                }
-            }
+                width:60%;
+               
             .close-btn{
                 display: flex;
                 text-transform: capitalize;
@@ -117,6 +104,7 @@
                     line-height: 1.25rem;
                 }
             }
+        }
         }
         
     }

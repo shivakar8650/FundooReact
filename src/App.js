@@ -8,6 +8,7 @@ import Dash from './pages/dash/Dash';
   import {  BrowserRouter ,Routes, Link , Route} from "react-router-dom";
  import Takenote from './component/takeNote/Takenote';
 import Displaynote from './component/displayNote/Displaynote';
+import Icon from './component/icons/Icon';
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
           <Route path="/login" element={<Signin/>} />
           <Route path="/forget" element={<Forget/>} />
           <Route path="/reset/:id" element={<Reset/>} />
-          <Route path="/dash" element={<Dash/> } />
+          <Route path="/dashbord" element={<Dash/> } />
           <Route path="/note" element={<Takenote /> } />
+          <Route path="/icon" element={<Icon/> } />
+
           <Route path="/displaynote" element={<Displaynote /> } />
       </Routes>
       </BrowserRouter>

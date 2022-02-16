@@ -13,19 +13,19 @@ export class Notes extends Component {
     }
     
     componentDidMount=()=>{
+        console.log("data find");
         this.getAllNotes();
+
     }
     getAllNotes=()=>{
-        // let data = {
-        //     "title":  this.state.title,
-        //     "discription": this.state.discription
-        //   };
         service.getnotes()
         .then((res)=>{
            this.setState({
-               notesArr:res.data
+               notesArr:res.data.notesdata
            });
            console.log(res.data);
+        //    console.log(res.data.message);
+        //    console.log(this.state.notesArr);
         }).catch((err) => {
           console.log(err);
         });
@@ -33,9 +33,8 @@ export class Notes extends Component {
     }
 
     render() {
-     
         return (
-            <div>
+            <div display={"flex"}>
                 <Takenote getAllNotes={this.getAllNotes}/>
                 <Displaynote notesArr={this.state.notesArr} />
             </div>

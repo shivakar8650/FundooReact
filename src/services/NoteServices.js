@@ -17,6 +17,13 @@ class NoteServices{
     getnotes() {
         return axiosService.get(`${baseURL}/AllNotesOfUser`, headerConfig);
     }
+
+    updatecolor(data){
+        return axiosService.put(`${baseURL}/Color`,data,headerConfig)
+   }
+//    getisArchieved(){
+//         return axiosService.getNo(`${baseURL}notes/isArchieved`,headerConfig)
+//    }
    
 }
 

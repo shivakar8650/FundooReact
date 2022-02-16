@@ -50,10 +50,10 @@ export class Signin extends Component {
         .then((res) => {
           console.log(res.data);
           localStorage.setItem("token", res.data.data.token)
-        //   this.setState({
+          this.setState({
 
-        //     redirect:true
-        // });
+            redirect:true
+        });
          
         }).catch((err) => {
           console.log(err);
