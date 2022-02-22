@@ -52,15 +52,33 @@ function Icons(props) {
         "noteId": props.notes.noteId,
         "color": value
       }
+      console.log(data.noteId);
+      console.log(value);
+      // props.changeColor(value)
       services.updatecolor(data).then((res) => {
         console.log(res.data);
+        props.changeColor();
       }).catch((err) => {
         console.log(err);
+        // props.changeColor();
       })
     }
   }
+ 
+  const Archievenote=()=>{
+    if(props.mode==="create"){
+      props.archieveChange()
+      }
+      else if(props.mode==="update"){
+        props.archieve()
+      }
+  }
 
-
+  const deletenote=()=>{
+    if(props.mode==="update"){
+      props.delete()
+      }
+  }
 
     return (
       <div className='icons'>
@@ -95,7 +113,7 @@ function Icons(props) {
 
 
         <IconButton><PhotoOutlinedIcon htmlColor="grey" /> </IconButton>
-        <IconButton><ArchiveOutlinedIcon htmlColor="grey" /></IconButton>
+        <IconButton><ArchiveOutlinedIcon htmlColor="grey" onClick={()=>Archievenote()} /></IconButton>
         <IconButton className='moreoption'><MoreVertOutlinedIcon htmlColor="grey" onClick={handleOpen1} variant="contained" aria-describedby={id1}/></IconButton>
        {/* <IconButton className='moreoption'><MoreVertOutlinedIcon htmlColor="grey" variant="contained" aria-describedby={id1} /></IconButton> */}
 
@@ -111,7 +129,7 @@ function Icons(props) {
         >
 
           <Typography sx={{ p: 1 }}>
-            <div className='iconpopover' >
+            <div className='iconpopover'  onClick={deletenote} >
 
               Delete Note
             </div>

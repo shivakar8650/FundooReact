@@ -29,10 +29,11 @@
     }
     .icons{
         display: flex;
+        width: 35%;
         .icon{
             display: flex;
             justify-content: space-around;
-            margin-left: 20px;
+            // margin-left: 20px;
             color: #787878;
         }
     }

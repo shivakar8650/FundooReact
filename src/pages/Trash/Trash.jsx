@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Displaynote from '../../component/displayNote/Displaynote';
 import Takenote from '../../component/takeNote/Takenote';
 import NoteServices from '../../services/NoteServices';
 
 const service = new NoteServices();
-export class Notes extends Component {
+export class Trash extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -21,7 +21,7 @@ export class Notes extends Component {
         service.getnotes()
         .then((res)=>{
            // let data=filter data
-           let filterData= res.data.notesdata.filter(data=>data.isArchive!==true && data.isTrash!==true)
+           let filterData= res.data.notesdata.filter(data=> data.isTrash===true)
            console.log(res.data);
            console.log(filterData);
            this.setState({
@@ -41,11 +41,10 @@ export class Notes extends Component {
     render() {
         return (
             <div display={"flex"}>
-                <Takenote getAllNotes={this.getAllNotes}/>
                 <Displaynote notesArr={this.state.notesArr} getAllNotes={this.getAllNotes} />
             </div>
         )
     }
 }
 
-export default Notes
+export default Trash

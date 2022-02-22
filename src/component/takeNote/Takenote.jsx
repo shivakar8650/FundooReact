@@ -22,7 +22,10 @@ export class Takenote extends Component {
             openNote: true,
             title: "",
             desc: "",
-            color: "#fff"
+            color: "#fff",
+            noteId: "",
+            isArchieve: false,
+            isTrash: false,
         }
     }
 
@@ -43,20 +46,28 @@ export class Takenote extends Component {
         })
         let data = {
             "title": this.state.title,
-            "message": this.state.desc
+            "message": this.state.desc,
+            "color":this.state.color,
+            "isArchive": this.state.isArchive,
+            "isTrash": this.state.isTrash,
         }
         console.log(data);
-        services.addnote(data)
+        if(data.title!=="")
+        {services.addnote(data)
             .then((res) => {
                 console.log(res.data);
                 this.setState({
                     title: '',
-                    desc: ''
-                    
+                    desc: '',
+                    color:"#fff"
                 })
                 this.props.getAllNotes();
                 console.log("in take a note");
             })
+        }
+        else{
+            console.log("note not create");
+        }
 
     }
 
@@ -74,7 +85,7 @@ export class Takenote extends Component {
 
                     {this.state.openNote ?
                         <div className='open-container' onClick={this.handleOpen}  style={{ backgroundColor: this.state.color }}>
-                            <input type="text" placeholder='Take a note...' name="desc" className='desc' onChange={(event) => this.handleInput(event)} />
+                            <input type="text" placeholder='Take a note...' name="desc" className='desc' onChange={(event) => this.handleInput(event)}  style={{ backgroundColor: this.state.color }} />
                             <div className="icons">
                                 <CheckBoxOutlinedIcon className='icon' />
                                 <BrushSharpIcon className='icon' />

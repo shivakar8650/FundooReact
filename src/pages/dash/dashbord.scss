@@ -1,0 +1,64 @@
+.typography{
+  color: #5f6368;
+  padding-left: 10px;
+  font-family: 'Product Sans',Arial,sans-serif;
+  line-height: 24px;
+  font-size: x-large;
+}
+
+.img {
+  height: 40px;
+  width: 40px;
+}
+
+.search {
+  width: 53%;
+  padding-left: 5%;
+}
+ .d-icons {
+   height:auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding-left: 26%;
+} 
+.profile {
+  display: flex;
+  justify-content: end;
+  width: 10%;
+}
+.accountpop{
+  display: flex;
+  width: 101%;
+  text-align: center;
+
+.imagedetails{
+display: flex;
+    text-align: center;
+    justify-content: center;
+
+       
+    .acc-logo{
+      background-color: rgb(41, 98, 255);
+    display: flex;
+    width: 49px;
+    justify-content: center;
+    font-size: xx-large;
+    border-radius: 39px;
+    }
+  }
+             .username{
+                 font-family: 'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+
+                h4{
+                  margin: 10px 0px;
+                }
+              }
+                      .signout{
+                      margin-top: 10px;
+                      }
+      
+    
+  
+}
+                

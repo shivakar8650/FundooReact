@@ -21,10 +21,17 @@ class NoteServices{
     updatecolor(data){
         return axiosService.put(`${baseURL}/Color`,data,headerConfig)
    }
-//    getisArchieved(){
-//         return axiosService.getNo(`${baseURL}notes/isArchieved`,headerConfig)
-//    }
-   
+    archivenotes(data){
+        return axiosService.put(`${baseURL}/Archive`,data,headerConfig)
+    }
+    deletenotes(data){
+        return axiosService.put(`${baseURL}/Trash`,data,headerConfig)
+    }
+    updatenotes(data){
+        return axiosService.put(`${baseURL}`,data,headerConfig)
+    }
+
 }
+   
 
 export default NoteServices 

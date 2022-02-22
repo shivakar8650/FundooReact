@@ -50,6 +50,8 @@ export class Signin extends Component {
         .then((res) => {
           console.log(res.data);
           localStorage.setItem("token", res.data.data.token)
+          localStorage.setItem("username", res.data.data.firstName)
+          localStorage.setItem("useremail", res.data.data.emailId)
           this.setState({
 
             redirect:true
