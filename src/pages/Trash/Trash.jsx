@@ -20,18 +20,13 @@ export class Trash extends Component {
     getAllNotes=()=>{
         service.getnotes()
         .then((res)=>{
-           // let data=filter data
            let filterData= res.data.notesdata.filter(data=> data.isTrash===true)
            console.log(res.data);
            console.log(filterData);
            this.setState({
-            //    notesArr:res.data.notesdata
                notesArr:filterData
                
            });
-      
-        //    console.log(res.data.message);
-        //    console.log(this.state.notesArr);
         }).catch((err) => {
           console.log(err);
         });

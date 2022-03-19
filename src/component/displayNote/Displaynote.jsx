@@ -20,11 +20,6 @@ const services = new NoteServices();
 
 function Displaynote(props) {
     const [open, setopen] = useState(false)
-    const [dialog, setdialog] = useState({
-        title: "",
-        description: "",
-        noteId: "",
-      });
     const [notes, setNotes] = useState({
         title: "",
         description: "",
@@ -59,7 +54,7 @@ function Displaynote(props) {
             "isTrash": notes.isTrash,
          
           };
-          services. updatenotes(data)
+          services.updatenotes(data)
             .then((result) => {
                 props.getAllNotes();
             })
@@ -116,7 +111,7 @@ function Displaynote(props) {
     return (
         <div className='displaynote-container'>
             {props.notesArr.map((note, index) => {
-                // if (!note.isArchive && !note.isTrash) {
+              
                     return (<div className='close-container'  style={{ backgroundColor: note.color }}>
                         <div className='note-title' onClick={() => handleOpen(note)}>
 
